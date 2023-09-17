@@ -1,6 +1,10 @@
 
 package com.mycompany.mavenproject7.JFrame;
 
+import static com.mycompany.mavenproject7.JFrame.DBConnection.getConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 
 public class Newsletter extends javax.swing.JFrame {
 
@@ -9,6 +13,34 @@ public class Newsletter extends javax.swing.JFrame {
      */
     public Newsletter() {
         initComponents();
+    }
+    
+    public void insertDetails(){
+        String username = name.getText();
+        String email_address = email.getText();
+        
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "insert into users(name, email) values(?,?)";
+            PreparedStatement pstatement = con.prepareStatement(sql);
+            pstatement.setString(1, username);
+            pstatement.setString(2, email_address);
+            
+            int updatedRows = pstatement.executeUpdate();
+            if(updatedRows > 0) {
+                System.out.println("Signed up successfully!");
+            } else {
+                System.out.println("Ups! Something went wrong. We couldn't sign you up");
+            }
+            
+            
+        } catch (Exception e){
+        e.getMessage();
+        System.out.print("Failure in inserting data");
+        System.out.println(e.getMessage());
+        }
+    
+    
     }
 
     /**
@@ -66,12 +98,21 @@ public class Newsletter extends javax.swing.JFrame {
         button.setFont(new java.awt.Font("Segoe Script", 0, 24)); // NOI18N
         button.setForeground(new java.awt.Color(204, 204, 204));
         button.setText("Sign up");
+        button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonActionPerformed(evt);
+            }
+        });
         jPanel1.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 220, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 660, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
+        insertDetails();
+    }//GEN-LAST:event_buttonActionPerformed
 
     /**
      * @param args the command line arguments
