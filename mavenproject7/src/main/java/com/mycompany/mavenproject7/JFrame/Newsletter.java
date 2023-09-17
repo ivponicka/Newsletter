@@ -49,6 +49,7 @@ public class Newsletter extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
 
         email.setBackground(new java.awt.Color(235, 234, 234));
+        email.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         email.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 280, 50));
 
@@ -57,6 +58,7 @@ public class Newsletter extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
 
         name.setBackground(new java.awt.Color(235, 234, 234));
+        name.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 280, 50));
 
